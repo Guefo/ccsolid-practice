@@ -1,41 +1,37 @@
-function op(a: any, b: any, operation: any): any {
-  switch (operation) {
-    case "a":
-      return a + b;
-    case "s":
-      return a - b;
-    case "m":
-      return a * b;
-    case "d":
-      if (b !== 0) {
-        return a / b;
-      } else {
-        console.error("Error: Cannot divide by zero.");
-        return a;
-      }
-    default:
-      console.error("Error: Invalid operation.");
+import { Operation } from "./types";
+
+const operations: Record<Operation, (a: number, b: number) => number> = {
+  add: (a, b) => a + b,
+  subtract: (a, b) => a - b,
+  multiply: (a, b) => a * b,
+  divide: (a, b) => {
+    if (b === 0) {
+      console.error("Error: Cannot divide by zero.");
       return a;
+    }
+    return a / b;
   }
+};
+
+function operator(a: number, b: number, operation: Operation): number {
+ if (!operations[operation]) {
+    console.error("Error: Invalid operation.");
+    return a;
+  }
+
+  return operations[operation](a, b);
 }
 
-export function calc(num: any): any {
-  let res = num;
+export function calculate(num: any): any {
+  let result;
 
-  res = op(res, 5, "a");
-  res = op(res, 3, "m");
-  res = op(res, 2, "s");
-  res = op(res, 4, "d");
+  result = operator(num, 5, "add");
+  result = operator(result, 2, "divide");
+  result = operator(result, 3, "multiply");
+  result = operator(result, 3, "add");
+  if (result !== 18) {
+    result = operator(result, 11, "subtract");
+  }
 
-  res = op(res, 10, "a");
-  res = op(res, 2, "m");
-
-  const custom = (a: any, b: any) => a + b * 2;
-  res = custom(res, 5);
-
-  res = op(res, 3, "m");
-  res = op(res, 8, "d");
-  res = op(res, 2, "a");
-
-  return res;
+  return result;
 }

@@ -1,0 +1,21 @@
+{
+  "name": "ccsolid-practice",
+  "version": "1.0.0",
+  "description": "This codebase contains areas that can be improved by refactoring and applying SOLID principles. Your task is to refactor the code to adhere to as many SOLID principles as possible.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guefo/ccsolid-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Guefo/ccsolid-practice/issues"
+  },
+  "homepage": "https://github.com/Guefo/ccsolid-practice#readme"
+}
